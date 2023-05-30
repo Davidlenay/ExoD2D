@@ -1,0 +1,22 @@
+.badge {
+    width: 100px;
+    height: 15px;
+    border: 2px solid black;
+    
+
+    &--blanc {
+        background-color: wheat;
+    }
+
+    &--bleu {
+        background-color: turquoise;
+    }
+
+    &--rouge {
+        background-color: red;
+    }
+
+    &--vert {
+        background-color: lime;
+    }
+}

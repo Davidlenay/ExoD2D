@@ -1,0 +1,36 @@
+<wcs-grid [data]="data" rowIdPath="name"  id="grid-cell-styling" [loading]="loading">
+    <wcs-grid-column name="Nom" path="name" sort="" ></wcs-grid-column>
+    <wcs-grid-column name="Date de création" id="creationDate" sort="" [customCells]="true"></wcs-grid-column>
+    <wcs-grid-column name="Volume" path="volume" sort="" id="convertVolume" [customCells]="true"></wcs-grid-column>
+    <wcs-grid-column name="badge" path="color" id="convertColor" sort="" [customCells]="true"></wcs-grid-column>
+    <wcs-grid-column name="Action" path="action" id="buttonDelete" sort="" [customCells]="true" ></wcs-grid-column>
+
+    <wcs-grid-custom-cell columnId="creationDate" [rowId]="row.name" *ngFor="let row of data">{{ row.date | date }}
+        
+    </wcs-grid-custom-cell> 
+    <!-- Format de date déclaré dans app.module -->
+
+    <wcs-grid-custom-cell columnId="convertVolume" [rowId]="row.name" *ngFor="let row of data"> {{ row.volume | liter }}
+
+    </wcs-grid-custom-cell>
+    <!-- le pipe lite est déclaré dans common/pipe-->
+
+    <wcs-grid-custom-cell columnId="convertColor" [rowId]="row.name" *ngFor="let row of data">
+        <app-custom2-badge [color]="row.color"></app-custom2-badge>
+    </wcs-grid-custom-cell>
+
+    <wcs-grid-custom-cell columnId="buttonDelete" [rowId]="row.name" *ngFor="let row of data">
+      <app-button-delete (toto)="deleteButton(row)"></app-button-delete>
+  </wcs-grid-custom-cell>
+
+
+
+  
+
+
+
+</wcs-grid>
+
+
+
+

@@ -1,0 +1,51 @@
+
+<form [formGroup]="userForm">
+    <wcs-form-field [isError]="userForm.controls.name.invalid" >
+        <wcs-label>Enter your name</wcs-label>
+            <wcs-input [disabled]="loading" placeholder="John doe"  type="text" formControlName="name"></wcs-input>
+                <wcs-hint>A name is something that describe a person, like you can call the person by his name, you get it?
+                </wcs-hint>
+                <wcs-error>{{ getMessage(userForm.controls.name) }}</wcs-error>
+    </wcs-form-field>
+
+    <wcs-form-field [isError]="userForm.controls.date.invalid">
+        <wcs-label>Today's date</wcs-label>
+            <wcs-input  [disabled]="loading" placeholder="John doe"  type="date" formControlName = "date"></wcs-input>
+                <wcs-hint>
+                    Choose today's date from the calendar
+                </wcs-hint>
+                <wcs-error>{{ getMessage(userForm.controls.date) }}</wcs-error>
+
+    </wcs-form-field>
+
+    <wcs-form-field [isError]="userForm.controls.volume.invalid">
+    <wcs-label>Volume</wcs-label>
+    <wcs-input [disabled]="loading" placeholder="John doe" type="number" formControlName="volume"></wcs-input>
+    <wcs-hint>
+        Enter a number from 1 to 10
+    </wcs-hint>
+    <wcs-error>{{ getMessage(userForm.controls.volume) }}
+    </wcs-error>
+
+    </wcs-form-field>
+
+    <wcs-form-field>
+        <wcs-label>What is your favorite color ?</wcs-label>
+        <wcs-select [disabled]="loading" placeholder="Select a country" formControlName="color">
+            <wcs-select-option value="WHITE">Blanc</wcs-select-option>
+            <wcs-select-option value="BLUE">Bleu </wcs-select-option>
+            <wcs-select-option value="RED">Rouge</wcs-select-option>
+            <wcs-select-option value="GREEN">Vert</wcs-select-option>
+        </wcs-select>
+        <wcs-hint>Please select a color</wcs-hint>
+        <wcs-error>{{ getMessage(userForm.controls.color) }}</wcs-error>
+    </wcs-form-field>
+
+    <wcs-form-field>
+    <wcs-button [loading]="loading" class="wcs-success" id="button" (click)="validate() ">
+        Submit
+    </wcs-button>
+    </wcs-form-field>
+</form>
+
+

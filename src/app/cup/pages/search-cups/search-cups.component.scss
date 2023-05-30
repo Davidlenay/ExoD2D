@@ -1,0 +1,10 @@
+    /* Auto generated part */
+    #grid-cell-styling::part(first_name-column) {
+        background-color: var(--wcs-cyan);
+        color: var(--wcs-white);
+    }
+
+    /* Custom user part added in formatter function */
+    #grid-cell-styling::part(custom-user-part) {
+        color: var(--wcs-cyan);
+    }

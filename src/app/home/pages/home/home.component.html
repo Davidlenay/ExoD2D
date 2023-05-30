@@ -1,0 +1,28 @@
+<div class="allPage">
+<h1> Mes pourcentages de badge</h1>
+<div class="pourcent">
+<app-percentage-bar
+  [countCup]="countGrenn()"
+  [colorCups]="'GREEN'"
+  [totalCups]="total()"
+></app-percentage-bar>
+
+<app-percentage-bar
+  [countCup]="countRed()"
+  colorCups="RED"
+  [totalCups]="total()"
+></app-percentage-bar>
+
+<app-percentage-bar
+  [countCup]="countBlue()"
+  [colorCups]="'BLUE'"
+  [totalCups]="total()"
+></app-percentage-bar>
+
+<app-percentage-bar
+  [countCup]="countWhite()"
+  [colorCups]="'W'+'HITE'.toLowerCase()"
+  [totalCups]="total()"
+></app-percentage-bar>
+</div>
+</div>
