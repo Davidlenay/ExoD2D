@@ -1,4 +1,5 @@
 import { newCup } from "src/app/model/new-cup.model";
+import { SearchCup } from "src/app/model/search-cup.model";
 
 export namespace CupAction {
 
@@ -21,7 +22,7 @@ export namespace CupAction {
 
     export class Delete {
         static readonly type = '[Cup] Delete';    
-        constructor(public id: number) {}
+        constructor(public id: string) {}
       }
 
     export class DeleteSuccess {
@@ -44,14 +45,12 @@ export namespace CupAction {
     export class ReadSucces {
         static readonly type = '[Cup] Read Success';
     
-        constructor() {}
+        constructor(public data: SearchCup[]) {}
       }
 
     export class ReadFailure {
         static readonly type = '[User] Read Failure';
     
         constructor(public err: any) {}
-
-      
     }    
 }

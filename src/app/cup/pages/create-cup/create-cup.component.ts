@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngxs/store';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 import { newCup } from 'src/app/model/new-cup.model';
 import { CupService } from 'src/app/services/cup.service';
+import { CupAction } from 'src/app/store/cup/cup.action';
+import { CupSelector } from 'src/app/store/cup/cup.selector';
 
 @Component({
   selector: 'app-create-cup',
@@ -22,7 +26,10 @@ export class CreateCupComponent {
 
   })
 
-  constructor(private cupService: CupService, private toastr: ToastrService) { }
+  constructor(private cupService: CupService, private toastr: ToastrService, private store : Store) { 
+    
+    this.store.select(CupSelector.getCreateLoading).subscribe(value => this.loading = value);
+  }
 
   validate(): void {
 
@@ -50,23 +57,21 @@ export class CreateCupComponent {
 
       }
 
-      this.loading = true;
-      this.userForm.disable()
-      this.cupService.createCup(cup).subscribe({
+      this.userForm.disable();
+
+      this.store.dispatch(new CupAction.Create(cup)).subscribe({
         next: () => {
           this.toastr.success('Congrat 😎');
-          this.loading = false;
+          
           this.userForm.enable()
           this.userForm.reset();
         },
-
         error: (err) => {
           console.log("erreur", err);
-          this.loading = false;
+          
           this.toastr.error('Erreur 😔');
           this.userForm.enable()
         }
-
       });
 
     }
